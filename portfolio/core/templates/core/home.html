@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  block content %}
+<style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .hero {
+      background-color: #f8f9fa;
+      padding: 100px 0;
+      text-align: center;
+    }
+    .project-card {
+      transition: transform 0.3s;
+    }
+    .project-card:hover {
+      transform: scale(1.03);
+    }
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+    }
+  </style>
+<!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1 class="display-4">Hi, I'm Bigyan Luitel</h1>
+      <p class="lead">A Passionate Web Developer | Django Enthusiast | Learner</p>
+      <a href="#projects" class="btn btn-primary btn-lg mt-3">View My Work</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <!-- About Section -->
+<section id="about" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">About Me</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <p class="fs-5">
+          I'm <strong>Bigyan Luitel</strong>, a Computer Science student with a deep interest in backend web development and AI technologies. Throughout my academic journey, I've developed a solid foundation in programming, data structures, and software engineering.
+        </p>
+        <p class="fs-5">
+          My current focus is on building web applications using <strong>Django</strong>, integrating APIs, and learning about <strong>data science and machine learning</strong>. I enjoy solving problems, learning new tools, and transforming ideas into practical software solutions.
+        </p>
+        <p class="fs-5">
+          I’ve also worked on projects like a <strong>School Management System</strong>, a <strong>Multi-user Todo App</strong>, and a <strong>Space & Weather API-powered Dashboard</strong>. I'm passionate about continuously improving my skills and contributing to meaningful tech projects.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills & Topics Section -->
+<section id="skills" class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center mb-4">Skills & Topics Learned</h2>
+    <div class="row text-center g-4">
+
+      <!-- Programming Languages -->
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h4>Programming Languages</h4>
+          <ul class="list-unstyled">
+            <li>Python</li>
+            <li>C / C++</li>
+            <li>JavaScript</li>
+            <li>HTML, CSS</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Web & Backend -->
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h4>Web & Backend</h4>
+          <ul class="list-unstyled">
+            <li>Django Framework</li>
+            <li>Bootstrap</li>
+            <li>REST APIs</li>
+            <li>MySQL / SQLite</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CS Topics -->
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h4>Computer Science Topics</h4>
+          <ul class="list-unstyled">
+            <li>Data Structures & Algorithms</li>
+            <li>OOP (Object-Oriented Programming)</li>
+            <li>Database Management Systems</li>
+            <li>Operating Systems</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Extra -->
+      <div class="col-md-4 mt-4">
+        <div class="p-4 border rounded shadow-sm h-100">
+          <h4>Other Interests</h4>
+          <ul class="list-unstyled">
+            <li>Data Science & AI/ML</li>
+            <li>Version Control (Git & GitHub)</li>
+            <li>Statistics</li>
+            <li>Unix/Linux</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Projects</h2>
+    <div class="row g-4">
+      {% for project in projects %}
+      <div class="col-md-4">
+        <div class="card project-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description|truncatechars:50 }}</p>
+            <p><strong>Tech:</strong> {{ project.tech_stack }}</p>
+                <a href="{{ project.github_link }}" class="btn btn-sm btn-dark">GitHub</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Contact Me</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form  method="post">
+            {% csrf_token %}    
+            <div class="mb-3">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" name="name" class="form-control" id="name" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" name="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" name="message" id="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-white py-4 w-100" style="background: linear-gradient(to right, #1f1c2c, #928dab);">
+  <div class="container">
+    <h5 class="mb-3">Connect with me</h5>
+    <div class="mb-3">
+      <a href="https://github.com/BigyanLuitel" class="text-white mx-3" >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      <a href="http://linkedin.com/in/bigyan-luitel-b5245230b" class="text-white mx-3" >
+        <i class="fab fa-linkedin fa-lg"></i>
+      </a>
+      <a href="https://www.facebook.com/bigyan.luitel.2025" class="text-white mx-3" >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      <a href="mailto:luitelbigyan344@gmail.com" class="text-white mx-3">
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+    </div>
+    <p class="mb-0 small">&copy; 2025 <strong>Bigyan Luitel</strong>. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+{% endblock %}
