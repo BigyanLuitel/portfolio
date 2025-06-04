@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-k9up=y(13py3r^1t!&m9a8v!qk%oap*h2qra$zlg0@h0=((r9m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['bigyan-luitel.com.np', 'your-app-name.onrender.com']
+ALLOWED_HOSTS = ['bigyan-luitel.com.np', 'portfolio-cxfs.onrender.com']
 
 
 # Application definition
